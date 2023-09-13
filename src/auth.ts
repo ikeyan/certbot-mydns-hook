@@ -1,4 +1,4 @@
-#!/usr/bin/env node --loader tsx
+#!/usr/bin/env -S node --loader tsx
 import { appendFile } from "fs/promises";
 import { fetchDirectEdit, getCertbotEnvs } from "./common";
 
