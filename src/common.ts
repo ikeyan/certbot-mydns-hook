@@ -1,3 +1,6 @@
+import * as dotenv from "dotenv";
+dotenv.config();
+
 const url = "https://www.mydns.jp/directedit.html";
 
 const masterId = process.env.MYDNSJP_MASTERID;
