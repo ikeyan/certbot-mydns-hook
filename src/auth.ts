@@ -1,10 +1,8 @@
-#!/usr/bin/env -S node --loader tsx
-import { appendFile } from "fs/promises";
-import { fetchDirectEdit, getCertbotEnvs } from "./common";
+#!/usr/bin/env node
+import { fetchDirectEdit, getCertbotEnvs, logDebug } from "./common";
 
 const contents = await fetchDirectEdit({
   ...getCertbotEnvs(),
   EDIT_CMD: "REGIST", // TXTレコードの編集コマンド
 });
-const debug = [`contents=${contents}`, JSON.stringify(getCertbotEnvs())].map((s) => s + "\n").join("");
-await appendFile(__dirname + "/debug.log", debug);
+await logDebug([`contents=${contents}`, JSON.stringify(getCertbotEnvs())].map((s) => s + "\n").join(""));

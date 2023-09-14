@@ -1,7 +1,8 @@
 import * as dotenv from "dotenv";
+import { appendFile } from "fs/promises";
 dotenv.config();
 
-const url = "https://www.mydns.jp/directedit.html";
+export const url = "https://www.mydns.jp/directedit.html";
 
 const masterId = process.env.MYDNSJP_MASTERID;
 if (!masterId) {
@@ -23,7 +24,7 @@ const certbotEnvKeys = [
   "CERTBOT_SNI_DOMAIN",
   "CERTBOT_AUTH_OUTPUT",
 ];
-const getCertbotEnvs = () =>
+export const getCertbotEnvs = () =>
   Object.fromEntries(
     certbotEnvKeys.flatMap((key) => {
       const value = process.env[key];
@@ -34,7 +35,7 @@ const getCertbotEnvs = () =>
     })
   );
 
-const fetchDirectEdit = async (params: Record<string, string>) =>
+export const fetchDirectEdit = async (params: Record<string, string>) =>
   await fetch(url, {
     method: "POST",
     headers: {
@@ -44,4 +45,5 @@ const fetchDirectEdit = async (params: Record<string, string>) =>
     body: new URLSearchParams(params).toString(),
   }).then((response) => response.text());
 
-export { url, masterId, masterPwd, getCertbotEnvs, fetchDirectEdit };
+const __dirname = new URL(".", import.meta.url).pathname;
+export const logDebug = async (debug: string) => await appendFile(__dirname + "/debug.log", debug);
