@@ -1,6 +1,12 @@
 import * as dotenv from "dotenv";
+import { fileURLToPath } from "url";
 import { appendFile } from "fs/promises";
-dotenv.config();
+import path from "path";
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
+const projectRoot = path.resolve(__dirname, "..");
+dotenv.config({
+  path: path.resolve(projectRoot, ".env"),
+});
 
 export const url = "https://www.mydns.jp/directedit.html";
 
@@ -45,5 +51,4 @@ export const fetchDirectEdit = async (params: Record<string, string>) =>
     body: new URLSearchParams(params).toString(),
   }).then((response) => response.text());
 
-const __dirname = new URL(".", import.meta.url).pathname;
-export const logDebug = async (debug: string) => await appendFile(__dirname + "/debug.log", debug);
+export const logDebug = async (debug: string) => await appendFile(__dirname + "/debug.log", `[${(new Date()).toISOString()}] ${debug}`);

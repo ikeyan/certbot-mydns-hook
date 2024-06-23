@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S npx tsx
 import { fetchDirectEdit, getCertbotEnvs, logDebug } from "./common";
 
 const contents = await fetchDirectEdit({
