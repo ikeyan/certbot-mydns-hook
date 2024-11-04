@@ -1,8 +1,13 @@
-#!/usr/bin/env -S npx tsx
-import { fetchDirectEdit, getCertbotEnvs, logDebug } from "./common";
+import {
+	fetchDirectEdit,
+	getCertbotEnvs,
+	logCertbotEnvsToDebug,
+	logDebug,
+} from "./common.js";
 
+await logCertbotEnvsToDebug();
 const contents = await fetchDirectEdit({
-  ...getCertbotEnvs(),
-  EDIT_CMD: "DELETE",
+	...getCertbotEnvs(),
+	EDIT_CMD: "DELETE",
 });
-await logDebug([`contents=${contents}`, JSON.stringify(getCertbotEnvs())].map((s) => s + "\n").join(""));
+await logDebug(`contents=${contents}`);
