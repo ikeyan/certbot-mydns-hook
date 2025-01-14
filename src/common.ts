@@ -1,12 +1,8 @@
-import * as dotenv from "dotenv";
 import { fileURLToPath } from "node:url";
 import { appendFile } from "node:fs/promises";
 import path from "node:path";
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
-dotenv.config({
-	path: path.resolve(projectRoot, ".env"),
-});
 
 export const url = "https://www.mydns.jp/directedit.html";
 

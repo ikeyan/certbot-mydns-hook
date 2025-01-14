@@ -1,3 +1,3 @@
 #!/bin/bash
 cd "$(dirname "$0")/.."
-./node_modules/.bin/tsx ./src/cleanup.ts
+./node_modules/.bin/tsx --env-file /etc/ikeyan/mydns.env ./src/cleanup.ts

@@ -1,0 +1,5 @@
+- [x] dotenvを削除、node --env-file=/etc/ikeyan/mydns.env で実行する
+- [ ] authとcleanupのエントリーポイントを1ファイルに統合する
+    - [ ] どのhookで呼ばれたかを判別する方法を考える
+- [ ] テストを書く
+- [ ] 1ファイルにバンドルする
